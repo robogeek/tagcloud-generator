@@ -1,0 +1,20 @@
+{
+  "author": {
+    "name": "David Herron",
+    "email": "david@davidherron.com",
+    "url": "http://nodejs.davidherron.com"
+  },
+  "name": "tagcloud-generator",
+  "description": "Assist with generating tag clouds",
+  "homepage": "https://github.com/robogeek/tagcloud-generator",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/robogeek/tagcloud-generator.git"
+  },
+  "version": "0.1.1",
+  "engines": {
+    "node": ">=0.10.1"
+  },
+  "dependencies": {
+  }
+}
