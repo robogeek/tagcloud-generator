@@ -23,3 +23,20 @@ module.exports.generateFontSizes = function(wordVector) {
     }
     return wordVector;
 }
+
+/**
+ * This generates a simple tag cloud that's just a block of links, with HTML styling
+ * to manipulate the size.
+ * TBD: Option to add a count?
+ **/
+module.exports.generateSimpleCloud = function(wordVector, urlFunc, cssClass) {
+    var res = "";
+    for (var i = 0; i < wordVector.length; i++) {
+        res += '<a href="'+
+            urlFunc(wordVector[i].tagName) +'"'+
+            (cssClass ? "class="+cssClass : "")
+            +" style='font-size: "+ wordVector[i].fontSize +"'"+'>'+
+            wordVector[i].tagName +'</a> ';
+    }
+    return res;
+}
