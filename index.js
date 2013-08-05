@@ -8,18 +8,20 @@ module.exports.generateFontSizes = function(wordVector) {
     //var count = 0;
     var min = 99999;
     var max = 0;
-    for (var i = 0; i < wordVector.length; i++) {
+    for (tagnm in wordVector) {
+        var tagData = wordVector[tagnm];
         //sum += wordVector[i].count;
         //count++;
-        if (wordVector[i].count < min) min = wordVector[i].count;
-        if (wordVector[i].count > max) max = wordVector[i].count;
+        if (tagData.count < min) min = tagData.count;
+        if (tagData.count > max) max = tagData.count;
     }
     //var avg = sum / count;
     var tenth = (max - min) / 10;
     
-    for (var i = 0; i < wordVector.length; i++) {
-        var relsize = Math.floor((wordVector[i].count - min) / tenth);
-        wordVector[i].fontSize = (70+ (relsize * 10)) + "%";
+    for (tagnm in wordVector) {
+        var tagData = wordVector[tagnm];
+        var relsize = Math.floor((tagData.count - min) / tenth);
+        tagData.fontSize = (70+ (relsize * 10)) + "%";
     }
     return wordVector;
 }
@@ -31,12 +33,13 @@ module.exports.generateFontSizes = function(wordVector) {
  **/
 module.exports.generateSimpleCloud = function(wordVector, urlFunc, cssClass) {
     var res = "";
-    for (var i = 0; i < wordVector.length; i++) {
+    for (tagnm in wordVector) {
+        var tagData = wordVector[tagnm];
         res += '<a href="'+
-            urlFunc(wordVector[i].tagName) +'"'+
+            urlFunc(tagData.tagName) +'"'+
             (cssClass ? "class="+cssClass : "")
-            +" style='font-size: "+ wordVector[i].fontSize +"'"+'>'+
-            wordVector[i].tagName +'</a> ';
+            +" style='font-size: "+ tagData.fontSize +"'"+'>'+
+            tagData.tagName +'</a> ';
     }
     return res;
 }
