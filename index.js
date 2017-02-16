@@ -37,14 +37,14 @@ module.exports.generateSimpleCloud = function(wordVector, urlFunc, cssClass) {
     for (var tagnm in wordVector) {
         tagnames.push(tagnm);
     }
-    tagnames.sort(function(a, b) {
+    tagnames = tagnames.sort(function(a, b) {
         // http://stackoverflow.com/questions/8996963/how-to-perform-case-insensitive-sorting-in-javascript
         // return a.toLowerCase().localeCompare(b.toLowerCase());
         // if (a.toLowerCase() < b.toLowerCase()) return -1;
         // if (a.toLowerCase() > b.toLowerCase()) return 1;
         // return 0;
-        var alc = a.tagName.toLowerCase();
-        var blc = b.tagName.toLowerCase();
+        var alc = a.toLowerCase();
+        var blc = b.toLowerCase();
         if (alc < blc) return -1;
         if (alc === blc) return 0;
         return 1;
