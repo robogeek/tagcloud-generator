@@ -32,10 +32,10 @@ module.exports.generateFontSizes = function(wordVector) {
  * TBD: Option to add a count?
  **/
 module.exports.generateSimpleCloud = function(wordVector, urlFunc, cssClass) {
-    var res = "";
+    /* var res = "";
     var tagnames = [];
     for (var tagnm in wordVector) {
-        tagnames.push(tagnm);
+        tagnames.push(wordVector[tagnm].tagName);
     }
     tagnames = tagnames.sort(function(a, b) {
         // http://stackoverflow.com/questions/8996963/how-to-perform-case-insensitive-sorting-in-javascript
@@ -50,7 +50,7 @@ module.exports.generateSimpleCloud = function(wordVector, urlFunc, cssClass) {
         return 1;
         /*if (a < b) return -1;
         else if (a === b) return 0;
-        else return 1;*/
+        else return 1;* /
     });
     for (var i = 0; i < tagnames.length; i++) {
         var tagnm = tagnames[i];
@@ -60,6 +60,23 @@ module.exports.generateSimpleCloud = function(wordVector, urlFunc, cssClass) {
             (cssClass ? "class="+cssClass : "")
             +" style='font-size: "+ tagData.fontSize +"'"+'>'+
             tagData.tagName +'</a> ';
+    } */
+    wordVector = wordVector.sort((a, b) => {
+        var tagA = a.tagName.toLowerCase();
+        var tagB = b.tagName.toLowerCase();
+        if (tagA < tagB) return -1;
+        if (tagA > tagB) return 1;
+        return 0;
+    });
+    var res = "";
+    for (var i = 0; i < wordVector.length; i++) {
+        var tagData = wordVector[i];
+        res += '<a href="'+
+            urlFunc(tagData.tagName) +'"'+
+            (cssClass ? "class="+cssClass : "")
+            +" style='font-size: "+ tagData.fontSize +"'"+'>'+
+            tagData.tagName +'</a> ';
+        
     }
     return res;
 }
