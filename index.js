@@ -43,8 +43,8 @@ module.exports.generateSimpleCloud = function(wordVector, urlFunc, cssClass) {
         // if (a.toLowerCase() < b.toLowerCase()) return -1;
         // if (a.toLowerCase() > b.toLowerCase()) return 1;
         // return 0;
-        var alc = a.toLowerCase();
-        var blc = b.toLowerCase();
+        var alc = a.tagName.toLowerCase();
+        var blc = b.tagName.toLowerCase();
         if (alc < blc) return -1;
         if (alc === blc) return 0;
         return 1;
