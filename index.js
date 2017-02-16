@@ -24,7 +24,7 @@ module.exports.generateFontSizes = function(wordVector) {
         tagData.fontSize = (70+ (relsize * 10)) + "%";
     }
     return wordVector;
-}
+};
 
 /**
  * This generates a simple tag cloud that's just a block of links, with HTML styling
@@ -32,35 +32,6 @@ module.exports.generateFontSizes = function(wordVector) {
  * TBD: Option to add a count?
  **/
 module.exports.generateSimpleCloud = function(wordVector, urlFunc, cssClass) {
-    /* var res = "";
-    var tagnames = [];
-    for (var tagnm in wordVector) {
-        tagnames.push(wordVector[tagnm].tagName);
-    }
-    tagnames = tagnames.sort(function(a, b) {
-        // http://stackoverflow.com/questions/8996963/how-to-perform-case-insensitive-sorting-in-javascript
-        // return a.toLowerCase().localeCompare(b.toLowerCase());
-        // if (a.toLowerCase() < b.toLowerCase()) return -1;
-        // if (a.toLowerCase() > b.toLowerCase()) return 1;
-        // return 0;
-        var alc = a.toLowerCase();
-        var blc = b.toLowerCase();
-        if (alc < blc) return -1;
-        if (alc === blc) return 0;
-        return 1;
-        /*if (a < b) return -1;
-        else if (a === b) return 0;
-        else return 1;* /
-    });
-    for (var i = 0; i < tagnames.length; i++) {
-        var tagnm = tagnames[i];
-        var tagData = wordVector[tagnm];
-        res += '<a href="'+
-            urlFunc(tagData.tagName) +'"'+
-            (cssClass ? "class="+cssClass : "")
-            +" style='font-size: "+ tagData.fontSize +"'"+'>'+
-            tagData.tagName +'</a> ';
-    } */
     wordVector = wordVector.sort((a, b) => {
         var tagA = a.tagName.toLowerCase();
         var tagB = b.tagName.toLowerCase();
@@ -79,4 +50,4 @@ module.exports.generateSimpleCloud = function(wordVector, urlFunc, cssClass) {
         
     }
     return res;
-}
+};
